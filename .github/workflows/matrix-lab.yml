@@ -1,0 +1,16 @@
+name: Matrix Strategy lab
+
+on: 
+  workflow_dispatch:
+
+jobs:
+   test-matrix:
+      runs-on: ubuntu-latest
+
+      strategy:
+        matrix:
+          node-version: [16, 18, 20]
+
+      steps:
+        - name: show matrix version
+          run: echo "Running with Node version ${{ matrix.node-version }}"
