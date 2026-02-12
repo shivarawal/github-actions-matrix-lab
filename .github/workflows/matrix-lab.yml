@@ -1,16 +1,20 @@
-name: Matrix Strategy lab
+name: Matrix Strategy Lab
 
-on: 
+on:
   workflow_dispatch:
 
 jobs:
-   test-matrix:
-      runs-on: ubuntu-latest
+  test-matrix:
 
-      strategy:
-        matrix:
-          node-version: [16, 18, 20]
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node-version: [16, 18]
 
-      steps:
-        - name: show matrix version
-          run: echo "Running with Node version ${{ matrix.node-version }}"
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Show matrix combination
+        run: |
+          echo "OS: ${{ matrix.os }}"
+          echo "Node version: ${{ matrix.node-version }}"
